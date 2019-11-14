@@ -8,4 +8,3 @@ Feature: Reset functionality on login page of Application
       |User1     |password1        |
       |User2     |password2        |
       |User3     |password3        |
-    test
