@@ -1,4 +1,4 @@
-package com.test.base.steps;
+/*package com.test.base.steps;
 
 import com.test.base.pages.GuardianPage;
 import cucumber.api.Scenario;
@@ -48,3 +48,4 @@ public class BaseTest {
         }
     }
 }
+*/

@@ -14,8 +14,19 @@ import java.util.concurrent.TimeUnit;
 public class ServiceHooks {
 
     public static WebDriver driver;
+
+ /*   public ServiceHooks ()
+    {
+    }
+
+    public ServiceHooks(WebDriver driver) {
+
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+*/
     @Before
-    public static void initializeTest() throws Exception{
+    public void initializeTest() throws Exception{
         System.setProperty("webdriver.gecko.driver", "C://geckodriver//geckodriver.exe");
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.setCapability("marionette", true);

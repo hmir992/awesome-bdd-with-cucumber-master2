@@ -31,9 +31,9 @@ public class WhenSteps {
     //DesiredCapabilities capabilities = DesiredCapabilities.firefox();
     //driver = new FirefoxDriver(capabilities);
 
-    public WhenSteps(WebDriver driver) {
-        this.driver = ServiceHooks.driver;
-     }
+  //  public WhenSteps(WebDriver driver) {
+     //   this.driver = ServiceHooks.driver;
+   //  }
 
     @When("^I click on the \"([^\"]*)\" news article and Analyse$")
     public void iClickOnTheNewsArticleAndAnalyse(String articleNumber) throws Throwable {
