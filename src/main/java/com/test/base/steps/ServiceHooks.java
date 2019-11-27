@@ -21,15 +21,15 @@ public class ServiceHooks {
             firefoxOptions.setCapability("marionette", true);
             driver = new FirefoxDriver(firefoxOptions);
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            constructPages();
+           // constructPages();
 
     }
 
-    private static void constructPages (){
-        PageFactory.initElements(driver, GuardianPage.class);
+   // private static void constructPages (){
+   //     PageFactory.initElements(driver, GuardianPage.class);
 
 
-    }
+    //}
 
     @After
     public void embedScreenshot(Scenario scenario) {

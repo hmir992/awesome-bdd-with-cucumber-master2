@@ -1,19 +1,21 @@
 package com.test.base.pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
-public class GuardianPage {
-    private static WebDriver driver;
+public class GuardianPage extends BasePage{
 
-    public GuardianPage(WebDriver driver){
-        GuardianPage.driver = driver;
+    public GuardianPage(WebDriver driver) {
+
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public static String isAt(){
+    public String isAt(){
         return driver.getCurrentUrl();
     }
 
-    public static void gotoPage (){
+    public void gotoPage (){
         driver.get("https://www.theguardian.com/tone/news");
     }
 

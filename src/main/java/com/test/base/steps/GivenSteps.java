@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class GivenSteps {
+public class GivenSteps extends BaseTest {
 
     public static WebDriver driver;
     private String example ="";
@@ -22,7 +22,7 @@ public class GivenSteps {
     List<String> arrOfStr = new ArrayList<String>();
     private int wordMatchesLink = 0;
 
-    GuardianPage page = PageFactory.initElements(driver, GuardianPage.class);
+   // GuardianPage page = PageFactory.initElements(driver, GuardianPage.class);
     private final static Logger log = Logger.getLogger(GivenSteps.class);
 
 //    public GivenSteps(WebDriver driver) {
@@ -30,11 +30,11 @@ public class GivenSteps {
     //}
     @Given("^Open the Firefox and launch theguardian website$")
     public void openTheFirefoxAndLaunchTheguardianWebsite() {
-        try {
-            ServiceHooks.initializeTest();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+     //   try {
+     //       GuardianPage.initializeTest();
+     //   } catch (Exception e) {
+       //     e.printStackTrace();
+      //  }
 //        System.setProperty("webdriver.gecko.driver", "C://geckodriver//geckodriver.exe");
 //        driver = new FirefoxDriver();
 //        driver.manage().window().maximize();
@@ -42,7 +42,7 @@ public class GivenSteps {
         System.out.println("lol");
         //li[@class='fc-slice__item l-row__item l-row__item--span-1 u-faux-block-link'][1]
 
-        GuardianPage.gotoPage();
-        assertEquals(GuardianPage.isAt(), "https://www.theguardian.com/tone/news");
+        guardianPage.gotoPage();
+        assertEquals(guardianPage.isAt(), "https://www.theguardian.com/tone/news");
     }
 }
