@@ -1,14 +1,16 @@
+package com.test.base.tests;
+
 import cucumber.api.CucumberOptions;
-import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
+import cucumber.api.testng.CucumberFeatureWrapper;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "src/test/resources/features/Sample.feature",
-        glue = {"stepdefs"},
+        features = "src/main/resources/features",
+        glue = {"com.test.base.steps"},
         tags = {"~@Ignore"},
         format = {
                 "pretty",
@@ -16,7 +18,7 @@ import org.testng.annotations.Test;
                 "json:target/cucumber-reports/json-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun-reports/rerun.txt"
         })
-public class TestRunnerSample {
+public class TestRunner {
     private TestNGCucumberRunner testNGCucumberRunner;
 
     @BeforeClass(alwaysRun = true)

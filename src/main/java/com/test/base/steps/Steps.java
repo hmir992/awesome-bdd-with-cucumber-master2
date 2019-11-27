@@ -1,4 +1,4 @@
-package stepdefs;
+package com.test.base.steps;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+/*
 public class Steps {
 
     private WebDriver driver;
@@ -26,7 +26,8 @@ public class Steps {
     private String toRemove ="– live!";
     private String toRemove2 ="https://www.";
     private String words;
-    private String[] arrOfStr = example.split(" ");
+    private String[] arrOfStr2 = example.split(" ");
+    List<String> arrOfStr = new ArrayList<String>();
     private int wordMatchesLink = 0;
 
     private final static Logger log = Logger.getLogger(Steps.class);
@@ -69,17 +70,27 @@ public class Steps {
             List<WebElement> my_list2 = my_list;
             List<String> my_list4 = new ArrayList<String>();
             System.out.println("The list of href links are : ");
-            for(WebElement element:my_list2){
-                //String[] my_list3 = element.getAttribute("href").split("-");
-                String[] my_list3 = element.getAttribute("href").replaceAll(toRemove2, "").split("-");
-                //example.replaceAll(toRemove2, "");
-                my_list4 =   Arrays.asList(my_list3);
-            System.out.println(Arrays.asList(my_list3));
+
+            for (int i = 0; i < arrOfStr.size(); i++){
+                System.out.print(arrOfStr.get(i) + " ");
+
+                for(WebElement element:my_list2) {
+                    //String[] my_list3 = element.getAttribute("href").split("-");
+                    List<String> my_list6 = Arrays.asList(element.getAttribute("href").replaceAll(toRemove2, "").split("-|/"));
+                    //example.replaceAll(toRemove2, "");
+                    //my_list4 = Arrays.asList(my_list6);
+                    System.out.println(my_list6);
+                    System.out.println("lol8");
+
+                    //if(arrOfStr.get(i) = my_list4.get(j)  )
+                }
 
 
 
 
         }
+
+
 
             for(String check:my_list4)
             {
@@ -131,12 +142,10 @@ public class Steps {
        // {
             example=example.replaceAll(toRemove, "");
             example=example.replaceAll(toRemove2, "");
-           arrOfStr= example.split(" ");
+           arrOfStr= Arrays.asList(example.split(" "));
             System.out.println(example);
             System.out.println("lol5");
-            for(int i =0; i<arrOfStr.length;i++) {
-                System.out.println(arrOfStr[i]);
-            }
+
       //  }
         System.out.println("lol4");
         //driver.findElement(By.xpath("uid")).sendKeys(articleNumber);
@@ -163,4 +172,4 @@ public class Steps {
         //throw new PendingException();
     }
 
-}
+} */

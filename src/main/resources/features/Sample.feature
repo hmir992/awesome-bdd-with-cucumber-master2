@@ -2,8 +2,8 @@ Feature: Reset functionality on login page of Application
   Scenario Outline: Verification of reset button with numbers of credential
     Given Open the Firefox and launch theguardian website
     When I click on the "<number>" news article and Analyse
-    And "<search>" to see if the article exists
-    Then verify the article exists
+  #  And "<search>" to see if the article exists
+  #  Then verify the article exists
     Examples:
     |number |search |
     |first    |google |
