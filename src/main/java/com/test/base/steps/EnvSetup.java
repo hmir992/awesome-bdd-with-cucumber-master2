@@ -11,20 +11,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class ServiceHooks {
+public class EnvSetup {
 
-    public static WebDriver driver;
+    protected static WebDriver driver;
 
- /*   public ServiceHooks ()
-    {
-    }
-
-    public ServiceHooks(WebDriver driver) {
-
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-*/
     @Before
     public void initializeTest() throws Exception{
         System.setProperty("webdriver.gecko.driver", "C://geckodriver//geckodriver.exe");
@@ -36,11 +26,6 @@ public class ServiceHooks {
 
     }
 
-   // private static void constructPages (){
-   //     PageFactory.initElements(driver, GuardianPage.class);
-
-
-    //}
 
     @After
     public void embedScreenshot(Scenario scenario) {
@@ -52,4 +37,6 @@ public class ServiceHooks {
             }
         }
     }
+
+
 }

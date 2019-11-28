@@ -4,7 +4,6 @@ import com.test.base.pages.GuardianPage;
 import cucumber.api.java.en.Given;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class GivenSteps {
 
-    public static WebDriver driver;
+
     private String example ="";
     private String toRemove ="– live!";
     private String toRemove2 ="https://www.";
@@ -24,8 +23,8 @@ public class GivenSteps {
 
 
     GuardianPage guardianPage;
-    ServiceHooks serviceHooks;
 
+    protected static WebDriver driver;
 
    // GuardianPage page = PageFactory.initElements(driver, GuardianPage.class);
     private final static Logger log = Logger.getLogger(GivenSteps.class);

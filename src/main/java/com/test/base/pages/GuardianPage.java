@@ -1,6 +1,6 @@
 package com.test.base.pages;
 
-import com.test.base.steps.ServiceHooks;
+import com.test.base.steps.EnvSetup;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -8,16 +8,16 @@ public class GuardianPage extends BasePage{
 
     public GuardianPage(WebDriver driver) {
 
-        this.driver = ServiceHooks.driver;
+        this.setDriver(driver);
         PageFactory.initElements(driver, this);
     }
 
     public  String isAt(){
-        return driver.getCurrentUrl();
+        return this.getDriver().getCurrentUrl();
     }
 
     public void gotoPage (){
-        driver.get("https://www.theguardian.com/tone/news");
+        this.getDriver().get("https://www.theguardian.com/tone/news");
     }
 
 
