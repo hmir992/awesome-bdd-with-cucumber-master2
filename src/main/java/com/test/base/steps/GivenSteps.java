@@ -1,6 +1,7 @@
 package com.test.base.steps;
 
 import com.test.base.pages.GuardianPage;
+import com.test.base.webdriver.WebDriverInstancePage;
 import cucumber.api.java.en.Given;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -20,9 +21,14 @@ public class GivenSteps {
     private String[] arrOfStr2 = example.split(" ");
     List<String> arrOfStr = new ArrayList<String>();
     private int wordMatchesLink = 0;
+    //private WebDriver driver;
+
+
+
 
 
     GuardianPage guardianPage;
+
 
 
 
@@ -48,7 +54,7 @@ public class GivenSteps {
         System.out.println("lol");
         //li[@class='fc-slice__item l-row__item l-row__item--span-1 u-faux-block-link'][1]
 
-        guardianPage = new GuardianPage(EnvSetup.driver);
+        guardianPage = new GuardianPage(WebDriverInstancePage.getInstance());
         guardianPage.gotoPage();
         assertEquals(guardianPage.isAt(), "https://www.theguardian.com/tone/news");
     }

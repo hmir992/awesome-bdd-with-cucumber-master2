@@ -1,6 +1,7 @@
 package com.test.base.steps;
 
 import com.test.base.pages.GuardianPage;
+import com.test.base.webdriver.WebDriverInstancePage;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -13,18 +14,18 @@ import java.util.concurrent.TimeUnit;
 
 public class EnvSetup {
 
-    protected static WebDriver driver;
+    private WebDriver driver;
+    WebDriverInstancePage webDriverInstance = WebDriverInstancePage.getInstance();
+
 
     @Before
     public void initializeTest() throws Exception{
-        System.setProperty("webdriver.gecko.driver", "C://geckodriver//geckodriver.exe");
-            FirefoxOptions firefoxOptions = new FirefoxOptions();
-            firefoxOptions.setCapability("marionette", true);
-            driver = new FirefoxDriver(firefoxOptions);
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-           // constructPages();
 
+        driver=webDriverInstance.openBrowser();
+            //constructPages();
     }
+
+
 
 
     @After
