@@ -1,5 +1,6 @@
 package com.test.base.steps;
 
+import com.test.base.pages.GuardianPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
@@ -28,6 +29,7 @@ public class WhenSteps {
     private int wordMatchesLink = 0;
 
     private final static Logger log = Logger.getLogger(WhenSteps.class);
+    GuardianPage guardianPage = new GuardianPage(EnvSetup.driver);
     //DesiredCapabilities capabilities = DesiredCapabilities.firefox();
     //driver = new FirefoxDriver(capabilities);
 
@@ -51,13 +53,16 @@ public class WhenSteps {
             } catch (org.openqa.selenium.NoSuchElementException e) {
                 log.info("accept button not found. Continuing with test", e);
             } */
-
-            try {
+            guardianPage.clickOnPravicyCookiesPopup();
+            guardianPage.clickOnFirstArticle();
+           /* try {
                 driver.findElement(By.xpath("//button[@data-link-name='first-pv-consent : agree'][1]")).click();
                 Thread.sleep(5000);
             } catch (org.openqa.selenium.NoSuchElementException e) {
                 log.info("accept button not found. Continuing with test", e);
             }
+
+            */
 
         }
 

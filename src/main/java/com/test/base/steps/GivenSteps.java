@@ -22,7 +22,7 @@ public class GivenSteps {
     private int wordMatchesLink = 0;
 
 
-    GuardianPage guardianPage;
+    GuardianPage guardianPage = new GuardianPage(EnvSetup.driver);
 
 
 
@@ -48,8 +48,8 @@ public class GivenSteps {
         System.out.println("lol");
         //li[@class='fc-slice__item l-row__item l-row__item--span-1 u-faux-block-link'][1]
 
-        guardianPage = new GuardianPage(EnvSetup.driver);
+        //guardianPage = new GuardianPage(EnvSetup.driver);
         guardianPage.gotoPage();
-        assertEquals(guardianPage.isAt(), "https://www.theguardian.com/tone/news");
+        //assertEquals(guardianPage.isAt(), "https://www.theguardian.com/tone/news");
     }
 }
