@@ -1,9 +1,7 @@
 package com.test.base.pages;
 
-import com.test.base.steps.EnvSetup;
 import com.test.base.steps.GivenSteps;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,12 +14,15 @@ import java.util.List;
 public class GuardianPage extends BasePage {
 
     private WebDriver driver;
-    private String example ="";
+    private String linkString ="";
     private String toRemove ="– live!";
     private String toRemove2 ="https://www.";
+    private String toRemove3 ="– business live";
+    //private String toRemove4 ="– live!";
+
     private String words;
-    private String[] arrOfStr2 = example.split(" ");
-    List<String> arrOfStr = new ArrayList<String>();
+    private String[] arrOfStr2 = linkString.split(" ");
+    //List<String> arrOfStr = new ArrayList<String>();
     private int wordMatchesLink = 0;
 
 
@@ -57,20 +58,32 @@ public class GuardianPage extends BasePage {
         this.getDriver().get("https://www.theguardian.com/tone/news");
     }
 
-    public void clickOnFirstArticle() {
+    public String clickOnFirstArticle(String linkString) {
         firstArticle.click();
-        example = firstArticleHeadline.getText();
-        System.out.println(example);
+        linkString = firstArticleHeadline.getText();
+        System.out.println(linkString);
         // if(example.contains(toRemove) || example.contains(toRemove2))
         // {
-        example=example.replaceAll(toRemove, "");
-        example=example.replaceAll(toRemove2, "");
-        arrOfStr= Arrays.asList(example.split(" "));
-        System.out.println(example);
+
+        //string formatting heading
+        linkString = linkString.replaceAll(toRemove, "");
+        linkString = linkString.replaceAll(toRemove2, "");
+        linkString = linkString.replaceAll(toRemove3, "");
+        //linkString = linkString.replaceAll(toRemove4, "");
+        System.out.println("lol7");
+        return linkString;
+
+    }
+    // splitting heading into words
+    public List<String> splitStringIntoWords(String linkString, List<String> arrOfStr ) {
+        arrOfStr= Arrays.asList(linkString.split(" "));
+        System.out.println(linkString);
         System.out.println("lol5");
 
         //  }
         System.out.println("lol4");
+
+        return arrOfStr;
     }
 
     public void clickOnPravicyCookiesPopup() {

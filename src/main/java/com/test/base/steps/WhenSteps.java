@@ -1,35 +1,29 @@
 package com.test.base.steps;
 
+import com.test.base.pages.Google;
 import com.test.base.pages.GuardianPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class WhenSteps {
 
     private WebDriver driver;
-    private String example ="";
+    private String linkString ="";
     private String toRemove ="– live!";
     private String toRemove2 ="https://www.";
     private String words;
-    private String[] arrOfStr2 = example.split(" ");
+    private String[] arrOfStr2 = linkString.split(" ");
     List<String> arrOfStr = new ArrayList<String>();
     private int wordMatchesLink = 0;
 
     private final static Logger log = Logger.getLogger(WhenSteps.class);
     GuardianPage guardianPage = new GuardianPage(EnvSetup.driver);
+    Google google = new Google(EnvSetup.driver);
     //DesiredCapabilities capabilities = DesiredCapabilities.firefox();
     //driver = new FirefoxDriver(capabilities);
 
@@ -54,7 +48,10 @@ public class WhenSteps {
                 log.info("accept button not found. Continuing with test", e);
             } */
             guardianPage.clickOnPravicyCookiesPopup();
-            guardianPage.clickOnFirstArticle();
+          linkString =  guardianPage.clickOnFirstArticle(linkString);
+            System.out.println(linkString);
+            System.out.println("lol9");
+            arrOfStr=   guardianPage.splitStringIntoWords(linkString, arrOfStr);
            /* try {
                 driver.findElement(By.xpath("//button[@data-link-name='first-pv-consent : agree'][1]")).click();
                 Thread.sleep(5000);
@@ -66,6 +63,7 @@ public class WhenSteps {
 
         }
 
+            /*
 
         //driver.findElement(By.xpath("/html/body/div[6]/div/div/div[2]/div[3]/button/span[2]")).click();
         //Thread.sleep(5000);
@@ -82,23 +80,31 @@ public class WhenSteps {
 
         //  }
         System.out.println("lol4");
+
+        */
+
         //driver.findElement(By.xpath("uid")).sendKeys(articleNumber);
         //driver.findElement(By.name("password")).sendKeys(password);
         //throw new PendingException();
 
-        try {
+  // this is for second ad enable cookies (not working)
+      /*  try {
             driver.findElement(By.className("site-message--first-pv-consent__button site-message--first-pv-consent__button--main js-first-pv-consent-agree")).click();
             Thread.sleep(5000);
         } catch (org.openqa.selenium.NoSuchElementException e) {
             log.info("accept button not found. Continuing with test", e);
         }
+        */
     }
 
 
     @And("^\"([^\"]*)\" to see if the article exists$")
     public void toSeeIfTheArticleExists(String search) throws Throwable {
         if (search.equals("google")) {
-            driver.get("https://www.google.com");
+            google.googleSearch(linkString, arrOfStr);
+
+
+         /*   driver.get("https://www.google.com");
             driver.findElement(By.name("q")).click();
             driver.findElement(By.name("q")).sendKeys(example);
             driver.findElement(By.name("q")).sendKeys(Keys.RETURN);
@@ -114,7 +120,7 @@ public class WhenSteps {
             System.out.println("The list of href links are : ");
 
             for (int i = 0; i < arrOfStr.size(); i++){
-                System.out.print(arrOfStr.get(i) + " ");
+                System.out.print(arrOfStr.get(i) + " " + "VALUE OF ARROFSTR");
 
                 for(WebElement element:my_list2) {
                     //String[] my_list3 = element.getAttribute("href").split("-");
@@ -141,8 +147,8 @@ public class WhenSteps {
                     wordMatchesLink++;
                     System.out.println(wordMatchesLink);
                 }
-            }
-        }
+            } */
+        }//
 
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
