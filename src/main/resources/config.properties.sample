@@ -1,0 +1,6 @@
+#TODO USE FOLDER DELIMITER BASED on OS
+GECKO_DRIVER=C:\\geckodriver\\geckodriver.exe
+CHROME_DRIVER=C:\\applications\\webdriver\\chromedriver.exe
+IE_DRIVER=C:\\applications\\webdriver\\IEDriverServer.exe
+USED_BROWSER=firefox
+FIREFOX_PATH=C:\\Users\\8020\\AppData\\Local\\Mozilla Firefox\\firefox.exe

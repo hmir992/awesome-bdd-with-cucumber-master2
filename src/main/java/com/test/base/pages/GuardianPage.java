@@ -53,9 +53,9 @@ public class GuardianPage extends BasePage {
     public String isAt() {
         return this.getDriver().getCurrentUrl();
     }
-
+    private String pageUrl = "https://www.theguardian.com/tone/news";
     public void gotoPage() {
-        this.getDriver().get("https://www.theguardian.com/tone/news");
+        this.getDriver().get(pageUrl);
     }
 
     public String clickOnFirstArticle(String linkString) {
@@ -66,9 +66,9 @@ public class GuardianPage extends BasePage {
         // {
 
         //string formatting heading
-        linkString = linkString.replaceAll(toRemove, "");
-        linkString = linkString.replaceAll(toRemove2, "");
-        linkString = linkString.replaceAll(toRemove3, "");
+        linkString = linkString.replaceAll(toRemove, "").replaceAll(toRemove2, "").replaceAll(toRemove3, "");
+//        linkString = linkString.replaceAll(toRemove2, "");
+//        linkString = linkString.replaceAll(toRemove3, "");
         //linkString = linkString.replaceAll(toRemove4, "");
         System.out.println("lol7");
         return linkString;

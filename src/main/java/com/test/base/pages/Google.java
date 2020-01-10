@@ -34,11 +34,13 @@ public class Google extends BasePage {
 
     public void googleSearch(String searchValue, List<String> arrOfStr) {
 
-        getDriver().get("https://www.google.com");
+        String pageURL = "https://www.google.com";
+        getDriver().get(pageURL);
         //driver.get("https://www.google.com");
-        getDriver().findElement(By.name("q")).click();
-        getDriver().findElement(By.name("q")).sendKeys(searchValue);
-        getDriver().findElement(By.name("q")).sendKeys(Keys.RETURN);
+        WebElement element1 = getDriver().findElement(By.name("q"));
+        element1.click();
+        element1.sendKeys(searchValue);
+        element1.sendKeys(Keys.RETURN);
         getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         // String text = driver.findElement(By.xpath("(//*[@class='HF9Klc iJddsb'])[1]")).getText();
         // System.out.println(text);
@@ -49,6 +51,7 @@ public class Google extends BasePage {
         List<WebElement> my_list2 = my_list;
         List<String> my_list4 = new ArrayList<String>();
         List<String> my_list6 = new ArrayList<String>();
+        List<String> myCompleteList = new ArrayList<String>();
         System.out.println("The list of href links are : ");
 
         for (int i = 0; i < arrOfStr.size(); i++) {
@@ -58,6 +61,7 @@ public class Google extends BasePage {
                 //String[] my_list3 = element.getAttribute("href").split("-");
                 // links of strings (on google) split into words
                 my_list6 = Arrays.asList(element.getAttribute("href").replaceAll(toRemove2, "").split("-|/"));
+                myCompleteList.addAll(my_list6);
                 //example.replaceAll(toRemove2, "");
                 //my_list4 = Arrays.asList(my_list6);
                 System.out.println(my_list6);
@@ -68,7 +72,7 @@ public class Google extends BasePage {
             }
 
 
-            for (String check : my_list6) {
+            for (String check : myCompleteList) {
                 System.out.println("lol111@");
                 System.out.println("VALUE OF LIST  " + check);
                 System.out.println("GOOGLE SEARCH " + searchValue);
