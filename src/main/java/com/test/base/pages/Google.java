@@ -49,15 +49,18 @@ public class Google extends BasePage {
         List<WebElement> my_list2 = my_list;
         List<String> my_list4 = new ArrayList<String>();
         List<String> my_list6 = new ArrayList<String>();
+        List<String> myCompleteList = new ArrayList<String>();
         System.out.println("The list of href links are : ");
 
-        for (int i = 0; i < arrOfStr.size(); i++) {
-            System.out.print(arrOfStr.get(i) + " ");
+
 
             for (WebElement element : my_list2) {
                 //String[] my_list3 = element.getAttribute("href").split("-");
                 // links of strings (on google) split into words
                 my_list6 = Arrays.asList(element.getAttribute("href").replaceAll(toRemove2, "").split("-|/"));
+//                compare(originalArticleTitle, googlkeNewName); // returns how many words from google tilte exist in original
+//                int percentage =
+                myCompleteList.addAll(my_list6);
                 //example.replaceAll(toRemove2, "");
                 //my_list4 = Arrays.asList(my_list6);
                 System.out.println(my_list6);
@@ -67,19 +70,30 @@ public class Google extends BasePage {
                 //if(arrOfStr.get(i) = my_list4.get(j)  )
             }
 
+        for (int i = 0; i < arrOfStr.size(); i++) {
+            System.out.print(arrOfStr.get(i) + " ");
 
-            for (String check : my_list6) {
+
+            for (int j =0; j<myCompleteList.size(); j++ ) {
                 System.out.println("lol111@");
-                System.out.println("VALUE OF LIST  " + check);
+                System.out.println("VALUE OF mycompletelist  " + myCompleteList.get(j));
                 System.out.println("GOOGLE SEARCH " + searchValue);
                 System.out.println(wordMatchesLink);
-                System.out.println("Search split " + searchValue.split(""));
-                if (check.equals(arrOfStr.get(i))) {
+                System.out.println("value of titlelist " + arrOfStr.get(i));
+                if (myCompleteList.get(j).equals(arrOfStr.get(i))) {
                     wordMatchesLink++;
                     System.out.println("WORDCOUNT MATCH");
                     System.out.println(wordMatchesLink);
                 }
+                System.out.println("myCompleteList: " + myCompleteList);
+                System.out.println(myCompleteList.get(0));
+                System.out.println("lol8");
+
+                //if(arrOfStr.get(i) = my_list4.get(j)  )
             }
+
+
+
         }
     }
 }
