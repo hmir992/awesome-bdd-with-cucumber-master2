@@ -45,26 +45,30 @@ public class Google extends BasePage {
         //System.out.println("lol5");
 
         new WebDriverWait(getDriver(), 20).until(ExpectedConditions.elementToBeClickable(By.linkText("News"))).click();
-        List<WebElement> my_list = new WebDriverWait(getDriver(), 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("h3.r.dO0Ag>a")));
-        List<WebElement> my_list2 = my_list;
+        List<WebElement> googleTitlesPerPage = new WebDriverWait(getDriver(), 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("h3.r.dO0Ag>a")));
+        List<WebElement> googleTitlesPerPage_webElements = googleTitlesPerPage;
         List<String> my_list4 = new ArrayList<String>();
-        List<String> my_list6 = new ArrayList<String>();
-        List<String> myCompleteList = new ArrayList<String>();
+        List<String> googleTitlesPerPage_stringArray = new ArrayList<String>();
+//        List<String> myCompleteList = new ArrayList<String>();
         System.out.println("The list of href links are : ");
 
 
 
-            for (WebElement element : my_list2) {
+            for (WebElement element : googleTitlesPerPage_webElements) {
                 //String[] my_list3 = element.getAttribute("href").split("-");
                 // links of strings (on google) split into words
-                my_list6 = Arrays.asList(element.getAttribute("href").replaceAll(toRemove2, "").split("-|/"));
+                googleTitlesPerPage_stringArray = Arrays.asList(element.getAttribute("href").replaceAll(toRemove2, "").split("-|/"));
 //                compare(originalArticleTitle, googlkeNewName); // returns how many words from google tilte exist in original
+                //googleNewNameMatchedWordsNumber / number of words in current title
+                //array [index of title (0..9)] = compare Value
+                // if comparePercentage > 75% then index = true
+                //count number of articles that are true
 //                int percentage =
-                myCompleteList.addAll(my_list6);
+//                myCompleteList.addAll(googleTitlesPerPage_stringArray);
                 //example.replaceAll(toRemove2, "");
-                //my_list4 = Arrays.asList(my_list6);
-                System.out.println(my_list6);
-                System.out.println(my_list6.get(0));
+                //my_list4 = Arrays.asList(googleTitlesPerPage_stringArray);
+                System.out.println(googleTitlesPerPage_stringArray);
+                System.out.println(googleTitlesPerPage_stringArray.get(0));
                 System.out.println("lol8");
 
                 //if(arrOfStr.get(i) = my_list4.get(j)  )
