@@ -13,20 +13,12 @@ import java.util.List;
 
 public class GuardianPage extends BasePage {
 
-    private WebDriver driver;
-    private String linkString ="";
     private String toRemove ="– live!";
     private String toRemove2 ="https://www.";
-    private String toRemove3 ="– business live";
+    //private String toRemove3 ="– business live";
     //private String toRemove4 ="– live!";
 
-    private String words;
-    private String[] arrOfStr2 = linkString.split(" ");
-    //List<String> arrOfStr = new ArrayList<String>();
-    private int wordMatchesLink = 0;
-
-
-    private final static Logger log = Logger.getLogger(GivenSteps.class);
+    private final static Logger log = Logger.getLogger(GuardianPage.class);
 
     @FindBy(xpath = "//button[@data-link-name='first-pv-consent : agree'][1]")
     WebElement pravicyCookiesPopupAgreeButton;
@@ -58,37 +50,27 @@ public class GuardianPage extends BasePage {
         this.getDriver().get("https://www.theguardian.com/tone/news");
     }
 
-    public String clickOnFirstArticle(String linkString) {
+    public String clickOnFirstArticle(String originalLinkString) {
         firstArticle.click();
-        linkString = firstArticleHeadline.getText();
-        System.out.println(linkString);
-        // if(example.contains(toRemove) || example.contains(toRemove2))
-        // {
-
+        originalLinkString = firstArticleHeadline.getText();
+        log.info("this is the original title clicked on: " + originalLinkString);
         //string formatting heading
-        linkString = linkString.replaceAll(toRemove, "");
-        linkString = linkString.replaceAll(toRemove2, "");
-        linkString = linkString.replaceAll(toRemove3, "");
-        //linkString = linkString.replaceAll(toRemove4, "");
-        System.out.println("lol7");
-        return linkString;
+        originalLinkString = originalLinkString.replaceAll(toRemove, "").replaceAll(toRemove2, "");
+        System.out.println("original string title formatting done! ");
+        return originalLinkString;
 
     }
     // splitting heading into words
-    public List<String> splitStringIntoWords(String linkString, List<String> arrOfStr ) {
-        arrOfStr= Arrays.asList(linkString.split(" "));
-        System.out.println(linkString);
-        System.out.println("lol5");
-
-        //  }
-        System.out.println("lol4");
-
-        return arrOfStr;
+    public List<String> splitStringIntoWords(String originalLinkString, List<String> wordsOfOriginalTitleArray ) {
+        wordsOfOriginalTitleArray= Arrays.asList(originalLinkString.split(" "));
+        log.info("this is the original title being split into words and put into an arraylist: " + originalLinkString);
+        return wordsOfOriginalTitleArray;
     }
 
     public void clickOnPravicyCookiesPopup() {
         try {
             pravicyCookiesPopupAgreeButton.click();
+            log.info("pravicyCookiesPopupAgreeButton is clicked on ");
             Thread.sleep(5000);
         } catch (org.openqa.selenium.NoSuchElementException e) {
             log.info("accept button not found. Continuing with test", e);

@@ -5,53 +5,33 @@ import com.test.base.pages.GuardianPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WhenSteps {
 
-    private WebDriver driver;
-    private String linkString ="";
-    private String toRemove ="– live!";
-    private String toRemove2 ="https://www.";
-    private String words;
-    private String[] arrOfStr2 = linkString.split(" ");
-    List<String> arrOfStr = new ArrayList<String>();
-    private int wordMatchesLink = 0;
-
     private final static Logger log = Logger.getLogger(WhenSteps.class);
+
+    //Page setup
     GuardianPage guardianPage = new GuardianPage(EnvSetup.driver);
     Google google = new Google(EnvSetup.driver);
-    //DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-    //driver = new FirefoxDriver(capabilities);
 
-  //  public WhenSteps(WebDriver driver) {
-     //   this.driver = ServiceHooks.driver;
-   //  }
+    private String originalLinkString ="";
+    List<String> wordsOfOriginalTitleArray = new ArrayList<String>();
 
     @When("^I click on the \"([^\"]*)\" news article and Analyse$")
     public void iClickOnTheNewsArticleAndAnalyse(String articleNumber) throws Throwable {
-        System.out.println("lol2");
-        System.out.println(articleNumber + "is article number");
+        log.info(articleNumber + "is article number");
         if (articleNumber.equals("first") || articleNumber.equals("1st")) {
-            System.out.println("lol3");
-            //content__headline
-            Thread.sleep(10000);
+            log.info("this is the first article");
+            //content_headline
+            Thread.sleep(4000);
 
-         /*   try {
-
-                driver.findElement(By.className("css-e4pxoq-buttonStyles-yellowButtonStyles-PrivacySettings")).click();
-                Thread.sleep(5000);
-            } catch (org.openqa.selenium.NoSuchElementException e) {
-                log.info("accept button not found. Continuing with test", e);
-            } */
             guardianPage.clickOnPravicyCookiesPopup();
-          linkString =  guardianPage.clickOnFirstArticle(linkString);
-            System.out.println(linkString);
-            System.out.println("lol9");
-            arrOfStr=   guardianPage.splitStringIntoWords(linkString, arrOfStr);
+            originalLinkString =  guardianPage.clickOnFirstArticle(originalLinkString);
+            log.info("this is the 1st link string: " + originalLinkString);
+            wordsOfOriginalTitleArray =   guardianPage.splitStringIntoWords(originalLinkString, wordsOfOriginalTitleArray);
            /* try {
                 driver.findElement(By.xpath("//button[@data-link-name='first-pv-consent : agree'][1]")).click();
                 Thread.sleep(5000);
@@ -101,7 +81,7 @@ public class WhenSteps {
     @And("^\"([^\"]*)\" to see if the article exists$")
     public void toSeeIfTheArticleExists(String search) throws Throwable {
         if (search.equals("google")) {
-            google.googleSearch(linkString, arrOfStr);
+            google.googleSearch(originalLinkString, wordsOfOriginalTitleArray);
 
 
          /*   driver.get("https://www.google.com");

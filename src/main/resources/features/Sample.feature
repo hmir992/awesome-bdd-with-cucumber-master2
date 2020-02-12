@@ -3,7 +3,7 @@ Feature: Reset functionality on login page of Application
     Given Open the Firefox and launch theguardian website
    When I click on the "<number>" news article and Analyse
     And "<search>" to see if the article exists
-    #Then verify the article exists
+    Then verify the article is true
     Examples:
     |number |search |
     |first    |google |
