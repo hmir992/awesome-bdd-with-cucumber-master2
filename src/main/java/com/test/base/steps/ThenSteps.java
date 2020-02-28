@@ -21,7 +21,7 @@ public class ThenSteps {
     public void verifyTheArticleIsTrue() {
 
        int wordMatchesLink  =  google.calculateArticleIsTrue();
-        if(wordMatchesLink>60) {
+        if(wordMatchesLink>10) {
             log.info("THIS TEST IS A PASS");
         }
         // Write code here that turns the phrase above into concrete actions

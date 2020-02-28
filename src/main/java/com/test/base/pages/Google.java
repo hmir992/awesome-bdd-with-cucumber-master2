@@ -62,8 +62,6 @@ public class Google extends BasePage {
             for (WebElement element : googleTitlesPerPage_webElements) {
                 // links of strings (on google) split into words
                 googleTitlesPerPage_stringArray = Arrays.asList(element.getAttribute("href").replaceAll(toRemove, "").replaceAll(toRemove2, "").split("-|/"));
-//                compare(originalArticleTitle, googlkeNewName); // returns how many words from google tilte exist in original
-//                int percentage =
                 myCompleteList.addAll(googleTitlesPerPage_stringArray);
                 log.info(googleTitlesPerPage_stringArray);
             }
@@ -89,7 +87,7 @@ public class Google extends BasePage {
 
         public int calculateArticleIsTrue()
         {
-            log.info("% of correct words in title compared to orignal wordcount: " + wordMatchesLink);
-            return sizeOfOriginalTiteArray/wordMatchesLink*100;
+            log.info("WORDCOUNT FINAL" + wordMatchesLink);
+            return wordMatchesLink;
         }
 }
