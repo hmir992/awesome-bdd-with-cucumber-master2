@@ -20,11 +20,10 @@ public class ThenSteps {
     @Then("^verify the article is true$")
     public void verifyTheArticleIsTrue() {
 
-       int wordMatchesLink  =  google.calculateArticleIsTrue();
-        if(wordMatchesLink>10) {
-            log.info("THIS TEST IS A PASS");
+      // words match more than 10 words then the test passed
+	int wordMatchesCounter  =  google.calculateArticleIsTrue();
+       if(wordMatchesCounter>10) {
+            log.info("TEST PASSED!");
         }
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
     }
 }

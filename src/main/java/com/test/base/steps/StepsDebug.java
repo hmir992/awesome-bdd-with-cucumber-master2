@@ -18,6 +18,10 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+// this class contains the original Steps logic for this project and such is depreciated
+// can be deleted from the project as well
+
 /*
 public class Steps {
 

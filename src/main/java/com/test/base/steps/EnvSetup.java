@@ -17,11 +17,14 @@ public class EnvSetup {
 
     @Before
     public void initializeTest() throws Exception{
-        System.setProperty("webdriver.gecko.driver", "C://geckodriver//geckodriver.exe");
-            FirefoxOptions firefoxOptions = new FirefoxOptions();
+    	//Setup firefox settings
+        System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");  
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.setCapability("marionette", true);
             driver = new FirefoxDriver(firefoxOptions);
+            // start driver
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.manage().window().maximize();
            // constructPages();
 
     }

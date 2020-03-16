@@ -13,14 +13,13 @@ import java.util.List;
 
 public class GuardianPage extends BasePage {
 
-    private String toRemove ="– live!";
-    private String toRemove2 ="https://www.";
-    //private String toRemove3 ="– business live";
-    //private String toRemove4 ="– live!";
+    //Strings to remove from URL
+    private String toRemove = "– live!";
+    private String toRemove2 = "https://www.";
 
     private final static Logger log = Logger.getLogger(GuardianPage.class);
 
-    @FindBy(xpath = "//button[@data-link-name='first-pv-consent : agree'][1]")
+    @FindBy(xpath = "//button[@class='css-2ismk2-button-defaultSize-iconDefault-iconLeft'][1]")
     WebElement pravicyCookiesPopupAgreeButton;
 
     @FindBy(xpath = "(//li[@class='fc-slice__item l-row__item l-row__item--span-1 u-faux-block-link'])[1]")
@@ -50,13 +49,14 @@ public class GuardianPage extends BasePage {
         this.getDriver().get("https://www.theguardian.com/tone/news");
     }
 
+    // clicking on the first article
     public String clickOnFirstArticle(String originalLinkString) {
         firstArticle.click();
         originalLinkString = firstArticleHeadline.getText();
         log.info("this is the original title clicked on: " + originalLinkString);
-        //string formatting heading
+        //string formatting heading when clicking on first link
         originalLinkString = originalLinkString.replaceAll(toRemove, "").replaceAll(toRemove2, "");
-        System.out.println("original string title formatting done! ");
+        log.info("original string title formatting done! ");
         return originalLinkString;
 
     }
@@ -66,7 +66,7 @@ public class GuardianPage extends BasePage {
         log.info("this is the original title being split into words and put into an arraylist: " + originalLinkString);
         return wordsOfOriginalTitleArray;
     }
-
+    	//Click on Privacy Cookie Popup
     public void clickOnPravicyCookiesPopup() {
         try {
             pravicyCookiesPopupAgreeButton.click();
